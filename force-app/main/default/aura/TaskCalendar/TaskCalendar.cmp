@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="TaskCalendarController">
+	
+    <ltng:require scripts="{!join(',', 
+                           $Resource.fullcalendar + '/jquery.min.js', 
+                           $Resource.fullcalendar + '/jquery-ui.min.js',
+                           $Resource.fullcalendar + '/moment.min.js', 
+                           $Resource.fullcalendar + '/fullcalendar.min.js')}"
+                  styles="{!$Resource.fullcalendar + '/fullcalendar.min.css'}"
+                  
+                  afterScriptsLoaded="{!c.scriptsLoaded}" />
+	
+	<b>Task Calendar</b>    
+    <div id='calendar'></div>
+    
+</aura:component>

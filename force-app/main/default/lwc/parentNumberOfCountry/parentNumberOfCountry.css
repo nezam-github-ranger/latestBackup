@@ -1,0 +1,10 @@
+app {
+    background-color: #fafaf9;
+    height: 100vh;
+    overflow: scroll;
+}
+b {
+    color: rgb(0, 112, 210);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+}

@@ -1,0 +1,14 @@
+<apex:component controller="AccountCommonController" >
+    <apex:attribute name="accObject" type="Id" description="" assignTo="{!accountObjectId}" />
+	     
+    <!-- <apex:outputLabel ><center><b> {!objectName} Details Page </b> </center> </apex:outputLabel>   --> 
+    <apex:pageBlock rendered="{!accountList != Null}">
+        <apex:pageBlockTable value="{!accountList}" var="acc">
+            <apex:column value="{!acc.Name}" />
+            <apex:column value="{!acc.Email__c}" />
+            <apex:column value="{!acc.Phone}" />
+            <apex:column value="{!acc.Fax}" />
+            
+        </apex:pageBlockTable> 
+    </apex:pageBlock> 
+</apex:component>

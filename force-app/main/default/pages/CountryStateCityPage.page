@@ -1,0 +1,75 @@
+<apex:page controller="CountryStateCityController" title="Country State City">
+    <apex:form id="frm" >
+        <apex:actionFunction action="{!editClicked}" reRender="frm" name="editClicked" >
+            <apex:param assignTo="{!editNo}" value="Country__c" name="EditNo" />   
+       	</apex:actionFunction>
+        <apex:actionFunction action="{!deleteClicked}" reRender="frm" name="deleteClicked" >
+       		<apex:param assignTo="{!editNo}" value="Country__c" name="DeleteNo" />   
+       	</apex:actionFunction>
+        <apex:actionFunction action="{!checkboxSelect}" reRender="frm" name="checkboxSelect" />
+        <apex:actionFunction action="{!checkboxAllSelect}" reRender="frm" name="checkboxAllSelect" />
+        
+    	<apex:pageBlock id="block" rendered="{!editHide}">
+        	<apex:pageBlockSection >
+            	<apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Country" />
+                    <apex:inputField value="{!countryObj.Name}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="State" />
+                    <apex:inputField value="{!countryObj.State__c}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="City" />
+                    <apex:inputField value="{!countryObj.City__c}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Save" action="{!save}" reRender="frm" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Multiple Edit" rendered="{!!editHide}">
+            <apex:pageBlockTable value="{!tempList}" var="temp">
+                <apex:column headerValue="Country">
+            		<apex:inputText value="{!temp.detailsObj.Name}" />
+                </apex:column>
+                <apex:column headerValue="State">
+                	<apex:inputText value="{!temp.detailsObj.State__c}" />
+                </apex:column>
+                <apex:column headerValue="City">
+                	<apex:inputText value="{!temp.detailsObj.City__c}" />
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                	<apex:commandButton value="Save" action="{!editSave}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+        <apex:pageBlock rendered="{!hide}" id="list">
+        	<apex:pageBlockTable value="{!countryList}" var="con">
+                <apex:column value="{!con.serialNo}" headerValue="#" />
+                <apex:column value="{!con.detailsObj.Name}" />
+                <apex:column value="{!con.detailsObj.State__c}" />
+                <apex:column value="{!con.detailsObj.City__c}" />
+                <apex:column value="{editNo == {!editNo}}"/>
+                <apex:column >
+                    <apex:facet name="header">
+                        <apex:inputCheckbox value="{!checkAll}" onchange="checkboxAllSelect();" />
+					</apex:facet>
+                	<apex:inputCheckbox value="{!con.checkbox}" onchange="checkboxSelect();" />
+                </apex:column>
+                <apex:column headerValue="Action">
+                    <apex:commandLink value="Edit" reRender="none" onclick="editClicked('{!con.serialNo}');" />  &nbsp;&nbsp;&nbsp; || &nbsp;&nbsp;&nbsp;
+                    <apex:commandLink value="Delete" reRender="none" onclick="deleteClicked('{!con.serialNo}');"  />
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Submit" action="{!submitRecord}" />
+                <apex:commandButton value="Edit" action="{!multipleEdit}" />
+                <apex:commandButton value="Delete" action="{!multipleDelete}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

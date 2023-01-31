@@ -1,0 +1,18 @@
+<apex:page controller="BookingDetailListController" title="Booking Details">
+    <apex:PageBlock >
+    	<apex:pageBlockTable value="{!bookings}" var="booking">
+            <apex:column value="{!booking.Name}" />
+            <apex:column value="{!booking.Customer__c}" />
+            <apex:column value="{!booking.Email__c}" />
+            <apex:column value="{!booking.RoomNo__c}" />
+            <apex:column value="{!booking.Status__c}" />
+            <apex:column value="{!booking.Total_Hours__c}" />
+            <apex:column value="{!booking.Amount__c}" />
+            <apex:column value="{!booking.Check_In_Time__c}" />
+            <apex:column value="{!booking.Check_Out_Time__c}"/>
+            
+        	
+        </apex:pageBlockTable>
+    </apex:PageBlock>
+    
+</apex:page>

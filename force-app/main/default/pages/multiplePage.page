@@ -1,0 +1,27 @@
+<apex:page controller="CheckboxController">
+    
+    <apex:form >
+        <apex:pageBlock >
+            <apex:outputLabel >Checkbox1</apex:outputLabel>
+            <apex:inputCheckbox value="{!checkbox1}">
+                <apex:actionSupport event="onchange" action="{!changeMethodCall}"/>
+                <!--<apex:param name="perfId" value="{!myRec.Id}"/>-->
+            </apex:inputCheckbox>
+            <apex:outputLabel >Checkbox2</apex:outputLabel>
+            <apex:inputCheckbox value="{!checkbox2}" title="Chk2">
+            	<apex:actionSupport event="onchange" action="{!changeMethodCall}"/>
+            </apex:inputCheckbox>
+        </apex:pageBlock>
+        
+        <apex:pageBlock >
+            checkbox1 ==> {!checkbox1} <br/>
+            checkbox2 ==> {!checkbox2} <br/>
+            checkbox1 value ==> {!checkbox1Value} <br/>
+            checkbox2 value ==> {!checkbox2Value} <br/>
+        
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:include pageName="CountryStateCityPage" />
+    
+</apex:page>

@@ -1,0 +1,39 @@
+<template>
+    <div class="slds-p-left_xx-large"><hr/>
+        <img src="https://www.lightningdesignsystem.com/assets/images/carousel/carousel-01.jpg" width="50%"></img>
+         <br/>
+        <b>Country : India </b> <br/>
+        <b>Capital : Delhi </b> <br/>
+        <b>Population : 1250000 </b> <br/>
+        <b>President : Narendra Modi </b>  
+        <!-- <lightning-checkbox-group
+            options={options}
+            value={value}
+            onchange={handleChange}
+        >
+        </lightning-checkbox-group>  -->
+        <lightning-input  onchange={handleChange} type="checkbox" label="Checkbox" value="India" ></lightning-input>
+    </div>
+    <br/>
+    <div class="slds-p-left_xx-large">
+        <img src="https://www.lightningdesignsystem.com/assets/images/carousel/carousel-02.jpg" width="50%"></img>
+         <br/>
+        <b>Country : US </b> <br/>
+        <b>Capital : Paris </b> <br/>
+        <b>Population : 1320000 </b> <br/>
+        <b>President : Alber Einsten </b>  
+        <lightning-input  onchange={handleChange} type="checkbox" label="Checkbox" value="US" ></lightning-input>
+    </div>
+    <br/>
+    <div class="slds-p-left_xx-large">
+        <img src="https://www.lightningdesignsystem.com/assets/images/carousel/carousel-03.jpg" width="50%"></img>
+         <br/>
+        <b>Country : South Africa </b> <br/>
+        <b>Capital : Melbern </b> <br/>
+        <b>Population : 132200 </b> <br/>
+        <b>President : DJ Poul </b>  
+        <lightning-input  onchange={handleChange} type="checkbox" label="Checkbox" value="SA" ></lightning-input> 
+    </div><br/>
+    
+    <lightning-button variant="brand-outline" label="Submit"  onclick={handleClick}  ></lightning-button>
+</template>

@@ -1,0 +1,11 @@
+.imgBox {
+    
+    border-radius: 30%;
+}
+
+@media customMediaQuery and (min-width: 900px) {
+
+    background: black;
+    color: white;
+    
+}

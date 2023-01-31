@@ -1,0 +1,25 @@
+<apex:page standardController="Contact" extensions="ContactProfileController" >
+    <!--<apex:form >
+        <apex:pageBlock >
+            
+            <apex:pageBlockTable value="{!attachmentList}" var="att" columns="2">
+                <apex:column headerValue="Profile">
+                    <apex:image value="/servlet/servlet.FileDownload?file={!att.Id}" height="50" width="50" rendered="{!attachmentList.size > 0}" />
+                </apex:column>
+            </apex:pageBlockTable>
+            
+            <apex:image value="{!$Resource.DefaultImage}" height="50" width="50" rendered="{!attachmentList.size < 1}"  />
+            <apex:inputFile value="{!attachmentObj.body}" fileName="{!attachmentObj.name}" />
+           
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Upload" action="{!upload}" /> 
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+        <script> 
+            if("{!attachmentList.size > 0}"){
+                window.parent.location.href="/{!Contact.Id}"  
+            }
+        </script>
+    </apex:form>-->
+</apex:page>

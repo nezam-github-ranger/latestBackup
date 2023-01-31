@@ -1,0 +1,10 @@
+<apex:page controller="AggregateAssignmentController" title="Number Of Contact Count">
+    <apex:form >
+        <apex:pageBlock title="Contact Counts">
+           <apex:pageBlockTable value="{!modelList}" var="con">
+                <apex:column value="{!con.accountName}" />
+               	<apex:column value="{!con.contactCount}" />
+           </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,22 @@
+<apex:component controller="ProjectTaskListSendEmailController" access="global">
+    <apex:attribute name="proId" type="Id" description="id of the project" assignTo="{!projectId}"/>
+    <table border="2" cellspacing="5">
+        <tr>
+            <th>SrNo.</th>
+            <th>Project Task Name</th>  
+        	<th>Creation Date</th>
+            <th>Completion Date</th>
+            <th>Completed By</th>
+        </tr>
+        <apex:variable var="count" value="{!1}"   />
+        <apex:repeat value="{!ProjectTaskList}" var="projectObject">
+            <tr>
+                <td>{!count}<apex:variable value="{!count+1}" var="count" /> </td>
+                <td>{!projectObject.Type__c}</td> 
+                <td><apex:outputField value="{!projectObject.CreatedDate}" /></td>
+                <td><apex:outputField value="{!projectObject.Completion_Date__c}" /></td>  
+                <td>{!projectObject.CreatedBy.Name}</td>  
+            </tr>
+        </apex:repeat>        
+    </table>
+</apex:component>

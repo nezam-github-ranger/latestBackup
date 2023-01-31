@@ -1,0 +1,22 @@
+<apex:page standardController="Account" extensions="InlineNewContactController"  >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:inputField value="{!contact.FirstName}"/>
+                <apex:inputField value="{!contact.LastName}"/>
+                <apex:inputField value="{!contact.Email}"/>
+                <apex:inputField value="{!contact.Phone}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton Value="Save" action="{!save}"/>        
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+        <script>
+        	if("{!contact.Id}" != ""){
+                window.parent.location.href="/{!contact.AccountId}"
+            }
+                
+        </script>
+    </apex:form>
+</apex:page>

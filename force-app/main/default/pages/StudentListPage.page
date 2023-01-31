@@ -1,0 +1,61 @@
+<apex:page controller="StudentListPageController">
+    <apex:form >
+        <apex:pageMessages />
+        <apex:variable value="{!0}" var="count" />
+    	<apex:sectionHeader title="Student Detail Page" />
+        <apex:pageBlock >
+            <b>First Name </b> <apex:inputText value="{!firstName}"/>
+            &nbsp;&nbsp;&nbsp;
+            <apex:selectList multiselect="false" size="1" value="{!operator}" required="false">
+                   <apex:selectOption itemLabel="=" itemValue="="/>
+                   <apex:selectOption itemLabel=">" itemValue=">"/>
+                   <apex:selectOption itemLabel="<" itemValue="<"/>
+                   <apex:selectOption itemLabel=">=" itemValue=">="/>
+                   <apex:selectOption itemLabel="<=" itemValue="<="/>
+            </apex:selectList>
+            &nbsp;&nbsp;
+			<b>Date Of Birth </b>
+            <apex:inputField value="{!con.Date_Of_Birth__c}"/>
+            &nbsp;&nbsp;&nbsp;
+            <apex:commandButton value="Search" action="{!search}"/>
+           
+            <apex:pageBlockTable value="{!studentList}" var="stu" >
+                <apex:column headerValue="Action">
+                    <input type="checkbox" name="{!count}" value="{!count}" />
+                </apex:column>
+                <apex:column headerValue="S.No">
+                    <apex:outputText value="{!count}" />
+                    <apex:variable value="{!count+1}" var="count" />
+                </apex:column>
+                <apex:column headerValue="Student Id">
+                    <apex:inputField value="{!stu.id}"/>
+                </apex:column>
+                <apex:column headerValue="Student First Name">
+                    <apex:inputField value="{!stu.First_Name__c}"/>
+                </apex:column>
+                <apex:column headerValue="Last Name">
+                    <apex:inputField value="{!stu.Last_Name__c}" required="false" />
+                </apex:column>
+                <apex:column headerValue="Class">
+                    <apex:inputField value="{!stu.Class__c}" required="false"/>
+                </apex:column>
+                <apex:column headerValue="Date Of Birth">
+                    <apex:inputField value="{!stu.Date_Of_Birth__c}"/>
+                </apex:column>
+                <apex:column headerValue="Email">
+                    <apex:inputField value="{!stu.Email__c}"/>
+                </apex:column>
+                <apex:column headerValue="Gender">
+                    <apex:inputField value="{!stu.Sex__c}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" />
+                <apex:commandButton value="Add Row" action="{!addBookingRow}" />
+                <apex:commandButton value="Delete Row" action="{!deleteBookingRow}" /> 
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

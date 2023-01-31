@@ -1,0 +1,7 @@
+hr {
+    display: block;
+    /* margin: var(--lwc-spacingXLarge,2rem) 0; */
+    border-top: 1px solid var(--lwc-colorBorder, rgb(221, 219, 218));
+    /* height: 1px; */
+    clear: both;
+}

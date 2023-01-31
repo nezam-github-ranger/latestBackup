@@ -1,0 +1,14 @@
+<!--
+
+	Name : LWC Assignment 1
+	Subject : In this assignment show account records.
+	Date  :  31-3-2021
+
+-->
+<template>
+	<div style="height: 300px;" if:true={showData}>
+		<lightning-datatable key-field="id" data={showData} columns={columns} onrowaction={handleRowAction}>
+		</lightning-datatable>
+	</div>
+
+</template>

@@ -1,0 +1,12 @@
+<apex:page controller="AccountOpportunityController" title="Opportunity Details" >
+    
+    <apex:pageBlock tabStyle="Opportunity" title="Opportunity Details">
+    	<apex:pageBlockTable value="{!opportunityList}" var="opp">
+            <apex:column value="{!opp.Name}" />
+            <apex:column value="{!opp.Type}" />
+            <apex:column value="{!opp.LeadSource}" />
+            <apex:column value="{!opp.Amount}" />        	
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+   	<c:AccountCommonDetails accObject="{!opportunityList[0].AccountId}"  />
+</apex:page>

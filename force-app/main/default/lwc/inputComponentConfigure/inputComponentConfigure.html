@@ -1,0 +1,42 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:timesheet" alternative-text="Event" size="small"></lightning-icon>
+            &nbsp;Flow to LWC Communication
+        </h3> 
+        <lightning-messages> </lightning-messages>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                padding="around-small">
+                <lightning-input type="text" label={first_name} disabled={disabledVal} required={requiredVal} value={fristFaxNumber} ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                padding="around-small">
+                <lightning-input type="text"   disabled={disabledVal} required={requiredVal} value={secondFaxNumber} ></lightning-input>
+            </lightning-layout-item> 
+            <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                padding="around-small">
+                <lightning-input type="text"  disabled={disabledVal} required={requiredVal} value={thirdFaxNumber} ></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-3">
+                <div class="slds-m-around_x-small">
+                    <lightning-input type="text" label={first_name} disabled={disabledVal} required={requiredVal} value={fristFaxNumber} ></lightning-input>
+                </div>
+            </div>
+            <div class="slds-size_1-of-3" data-id="marginDiv">
+                <div class={marginClass1}   >
+                    <lightning-input type="text" variant="label-hidden" disabled={disabledVal} required={requiredVal} value={secondFaxNumber} ></lightning-input>
+                </div>
+            </div>
+            <div class="slds-size_1-of-3">
+                <div  data-id="marginDiv" class={marginClass1} >
+                    <lightning-input type="text" variant="label-hidden" disabled={disabledVal} required={requiredVal} value={thirdFaxNumber} ></lightning-input>
+                </div>
+            </div>
+        </div>
+       
+        
+    </lightning-card>
+</template>

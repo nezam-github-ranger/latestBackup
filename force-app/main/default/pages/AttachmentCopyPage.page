@@ -1,0 +1,120 @@
+<apex:page controller="AttachmentCopyController" title="Attachment Copy" lightningStylesheets="true" >
+    <apex:form id="frm">
+        <apex:actionFunction action="{!loadNewList}" name="loadNewList"  />
+        <apex:actionFunction action="{!assignObjectDetails}" name="assignObjectDetails" />
+        <apex:actionFunction action="{!attachmentCheckAll}" name="attachmentCheckAll" reRender="attPage"/>
+        <apex:actionFunction action="{!attachmentCheck}" name="attachmentCheck" reRender="attPage"/>
+        <apex:actionFunction action="{!assignToCheckAll}" name="assignToCheckAll" reRender="detailsPage"/>
+        <apex:actionFunction action="{!assignToCheck}" name="assignToCheck" reRender="detailsPage"/>
+        
+        <apex:pageBlock rendered="{!displayPopUp}" >
+            
+            <apex:outputPanel >
+                <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+                <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                    <apex:pageBlock >
+                        <b>Assign To Object : </b>
+                        <apex:selectList size="1" value="{!assignObject}" onchange="assignObjectDetails();">
+                            <apex:selectOptions value="{!objectOptions}"></apex:selectOptions>
+                        </apex:selectList>
+                        <b> &nbsp;&nbsp;&nbsp;  Name : </b>
+                        <apex:inputText value="{!searchName}" />
+                        <apex:commandButton action="{!search}" value="Search" reRender="frm" /> &nbsp;&nbsp;&nbsp;
+                        <apex:commandButton value="Close" action="{!closePopup}" rendered="{!displayPopUp}"/>
+                    </apex:pageBlock>
+                    
+                    <apex:pageBlock title="Details List" rendered="{!hideDetails}" id="detailsPage">
+                        <apex:pageBlockTable value="{!objDetails}" var="obj" >
+                            <apex:column >
+                                <apex:facet name="header" >
+                                    <apex:inputCheckbox value="{!assignToCheckAll}" onchange="assignToCheckAll();" />
+                                </apex:facet>
+                                <apex:inputCheckbox value="{!obj.checkDetails}" onchange="assignToCheck()"/>   
+                            </apex:column>  
+                            <apex:column headerValue="Name" >
+                                <apex:outputField value="{!obj.accObj.Name}" /> 
+                                <apex:outputField value="{!obj.conObj.Name}" />
+                                <apex:outputField value="{!obj.camObj.Name}" />
+                            </apex:column>
+                            
+                        </apex:pageBlockTable>
+                        <apex:pageBlockButtons >
+                            <apex:commandButton value="Merge" action="{!submit}" />
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>
+                </apex:outputPanel>
+            </apex:outputPanel>
+            
+            <style type="text/css">
+                .custPopup{
+                -webkit-animation: fadeIn 1s;
+                overflow:scroll;
+                background-color: white;
+                border-width: 2px;
+                border-style: solid;
+                z-index: 9999;
+                left: 28%;
+                padding:10px;
+                position: absolute;
+                width: 600px;
+                height: auto;
+                max-height:400px;
+                top:50px;
+                }
+                .popupBackground{
+                background-color:black;
+                opacity: 0.20;
+                filter: alpha(opacity = 20);
+                position: absolute;
+                width: 100%;
+                height: 400%;
+                top: 0;
+                left: 0;
+                z-index: 9998;
+                }
+                @-webkit-keyframes fadeIn {
+                from {opacity: 0;} 
+                to {opacity: 1;}
+                }
+                
+            </style> 
+        </apex:pageBlock>
+        
+        <apex:pageBlock >
+            <b>Select Object : </b>
+            <apex:selectList size="1" value="{!selectedObject}" onchange="loadNewList();">  
+                <apex:selectOptions value="{!objectOptions}"></apex:selectOptions>
+            </apex:selectList>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Attachment List" rendered="{!hidePopup}" id="attPage">
+            <apex:pageBlockTable value="{!attachModel}" var="att">
+                <apex:column >
+                    <apex:facet name="header" >
+                        <apex:inputCheckbox value="{!checkAllAttachment}" onchange="attachmentCheckAll();" />	
+                    </apex:facet>
+                    <apex:inputCheckbox value="{!att.check}" onchange="attachmentCheck();" />    
+                </apex:column>
+                <apex:column value="{!att.attachmentObj.Name}" />
+                <apex:column headerValue="Preview">
+                    <!--
+                    <apex:image onclick="window.open('/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}')" value="{!$Resource.txt_logo}"  rendered="{!att.extension == 'TXT'}" height="50" width="50" />
+                    <apex:image onclick="window.open('/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}')" value="{!$Resource.excel_logo}"  rendered="{!att.extension == 'XLSX'}" height="50" width="50" />
+                    <apex:image onclick="window.open('/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}')" value="{!$Resource.docx_logo}"  rendered="{!att.extension == 'DOCX'}" height="50" width="50" />
+                    <apex:image onclick="window.open('/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}')" value="/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}" rendered="{!att.extension == 'JPG' || att.extension == 'PNG'}" height="50" width="50" /> 
+                    -->    
+                    <a href="https://ibirds-4f-dev-ed--c.documentforce.com/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}" target="_blank"><apex:image value="{!$Resource.txt_logo}"  rendered="{!att.extension == 'TXT'}" height="50" width="50" /></a>
+                    <a href="https://ibirds-4f-dev-ed--c.documentforce.com/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}" target="_blank"><apex:image value="{!$Resource.excel_logo}"  rendered="{!att.extension == 'XLSX'}" height="50" width="50" /></a>
+                    <a href="https://ibirds-4f-dev-ed--c.documentforce.com/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}" target="_blank"><apex:image value="{!$Resource.docx_logo}"  rendered="{!att.extension == 'DOCX'}" height="50" width="50" /></a>
+                    <a href="https://ibirds-4f-dev-ed--c.documentforce.com/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}" target="_blank"><apex:image value="/servlet/servlet.FileDownload?file={!att.attachmentObj.Id}" rendered="{!att.extension == 'JPG' || att.extension == 'PNG'}" height="50" width="50" /></a>
+                </apex:column>
+                
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Copy To" action="{!copyTo}" disabled="{!copyToButtonHide}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+    </apex:form>
+    
+</apex:page>

@@ -1,0 +1,124 @@
+<template>
+    <lightning-card>
+        <div class="slds-box">
+            <b style="font-size: x-large;margin-left: 125px;">Book Show</b>
+        </div>
+        <div class="slds-border_bottom" style="margin-top: 10px;margin-bottom: 10px;">
+            <div class="slds-grid slds-wrap" >
+                <div class="slds-col slds-small-size_12-of-12 slds-medium-size_3-of-12 slds-large-size_2-of-12">
+                    <lightning-avatar size="medium" src={parameters.image} class="slds-m-left_large"></lightning-avatar>
+                </div>
+                <div class="slds-col slds-small-size_12-of-12 slds-medium-size_9-of-12 slds-large-size_10-of-12">
+                    <p>{parameters.name}</p>
+                    <lightning-formatted-date-time  value={parameters.time} hour="2-digit" minute="2-digit" time-zone="UTC" time-zone-name="short"></lightning-formatted-date-time> -- 
+                    <lightning-formatted-url value="https://communitydomaindemo-developer-edition.ap24.force.com/theater/s/" label="Change"></lightning-formatted-url>
+                </div>
+            </div>
+        </div>
+        <lightning-input type="date" name="input1" label="Select Movie Date" value={bookingDate} onchange={handleSectedDate} ></lightning-input><br><br>
+        <div class="slds-border_bottom">
+            <p style="margin-left:30px;margin-top:10px;font-size:17px">Your Selected Seats</p><br/>
+
+            <span class="slds-badge_inverse" style="margin-left:10px;border-radius:6px;padding:6px">BRONZE</span>
+            <template for:each={bronzeList} for:item="bronze">
+                <span key={bronze.seat} class="slds-badge" style="margin-left:10px">{bronze.seat}</span>
+            </template><br/><br/>
+
+            <span class="slds-theme_success" style="margin-left:10px;border-radius:6px;padding:6px;">SILVER</span>
+            <template for:each={silverList} for:item="silver">
+                <span key={silver.seat} class="slds-badge" style="margin-left:10px">{silver.seat}</span>
+            </template><br/><br/>
+
+            <span class="slds-theme_warning" style="margin-left:10px;border-radius:6px;padding:6px;">GOLD</span>
+            <template for:each={goldList} for:item="gold">
+                <span key={gold.seat} class="slds-badge" style="margin-left:10px">{gold.seat}</span>
+            </template><br/><br/>
+            
+            <span class="slds-theme_error" style="margin-left:10px;border-radius:6px;padding:6px;">PLATINUM</span>
+            <template for:each={platinumList} for:item="platinum">
+                <span key={platinum.seat} class="slds-badge" style="margin-left:10px">{platinum.seat}</span>
+            </template><br/><br/>
+
+        </div><br/>
+        <div class="slds-border_bottom">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Type">Type</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Price">Price</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Seat">Seat</div>
+                   </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Amount">Amount</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="slds-hint-parent">
+                        <td data-label="Type">
+                            <div class="slds-truncate" title="Type">BRONZE</div>
+                        </td>
+                        <td data-label="Price">
+                            <div class="slds-truncate" title="Price">1000</div>
+                        </td>
+                        <td data-label="Seat">
+                            <div class="slds-truncate" title="Seat">{bronzeSelectedSeat}</div>
+                        </td>
+                        <td data-label="Amount">
+                            <div class="slds-truncate" title="Amount">{bronzeAmount}</div>
+                        </td>
+                    </tr>
+                    <tr class="slds-hint-parent">
+                        <td data-label="Type">
+                            <div class="slds-truncate" title="Type">SILVER</div>
+                        </td>
+                        <td data-label="Price">
+                            <div class="slds-truncate" title="Price">1500</div>
+                        </td>
+                        <td data-label="Seat">
+                            <div class="slds-truncate" title="Seat">{silverSelectedSeat}</div>
+                        </td>
+                        <td data-label="Amount">
+                            <div class="slds-truncate" title="Amount">{silverAmount}</div>
+                        </td>
+                    </tr>
+                    <tr class="slds-hint-parent">
+                        <td data-label="Type">
+                            <div class="slds-truncate" title="Type">GOLD</div>
+                        </td>
+                        <td data-label="Price">
+                            <div class="slds-truncate" title="Price">2300</div>
+                        </td>
+                        <td data-label="Seat">
+                            <div class="slds-truncate" title="Seat">{goldSelectedSeat}</div>
+                        </td>
+                        <td data-label="Amount">
+                            <div class="slds-truncate" title="Amount">{goldAmount}</div>
+                        </td>
+                    </tr>
+                    <tr class="slds-hint-parent">
+                        <td data-label="Type">
+                            <div class="slds-truncate" title="Type">PLATINUM</div>
+                        </td>
+                        <td data-label="Price">
+                            <div class="slds-truncate" title="Price">2000</div>
+                        </td>
+                        <td data-label="Seat">
+                            <div class="slds-truncate" title="Seat">{platinumSelectedSeat}</div>
+                        </td>
+                        <td data-label="Amount">
+                            <div class="slds-truncate" title="Amount">{platinumAmount}</div>
+                        </td>
+                    </tr>
+                </tbody>  
+            </table>    
+			<span style="margin-left:50px;font-size:15px;">Total Amount <b style="margin-left:100px">{totalAmount}</b></span>
+        </div><br/>
+		<button class="slds-button slds-button_destructive" style="width:330px;margin-left:10px" onclick={handleCheckout}>Checkout</button>
+    </lightning-card>
+</template>

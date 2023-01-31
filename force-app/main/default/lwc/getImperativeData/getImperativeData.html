@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Imperative Data Testing">
+        <lightning-button label="Fetch Data" onclick={handleClick} variant="brand" ></lightning-button>
+        
+        <template if:true={recordsList}> 
+            <template for:each={recordsList} for:item="record" >
+                <div class="dataDiv" key={record.Id}>Name : {record.Name}</div>
+            </template>
+        </template>
+        <template if:true={error}>
+            <div class="errorDiv" >Error Message : {error}</div>
+        </template>
+        <template if:true={message}>
+            <div>Message : {message}</div>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,14 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-wrap slds-p-horizontal_large" >
+            <template if:true={moviesDetails} for:each={moviesDetails} for:item="movie" >
+                <div class="slds-m-right_small slds-col slds-small-size_1-of-12 slds-medium-size_3-of-12" style="box-shadow: rgb(243 242 242) 0px 0px 5px 4px;padding: 5px;width: 190px" key={movie.Id}>
+                    <img src={movie.imageUrl} style="height:230px;width:180px" />
+                    <br><b>{movie.moviesObject.Name}</b><br>
+                    <p>Showtime : <lightning-formatted-date-time value={movie.moviesObject.Start_Time__c} hour="2-digit" minute="2-digit" time-zone="UTC" time-zone-name="short"></lightning-formatted-date-time></p>
+                    <lightning-button class="slds-m-around_medium" variant="destructive" data-time={movie.moviesObject.Start_Time__c} data-label={movie.imageUrl} label="Book Now" title={movie.moviesObject.Name} data-id={movie.moviesObject.Id} onclick={handleClick}  style="margin-left:30px"></lightning-button>
+                </div>
+            </template> 
+        </div>
+    </lightning-card>
+</template>

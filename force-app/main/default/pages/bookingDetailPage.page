@@ -1,0 +1,20 @@
+<apex:page standardController="Booking__c" title="Booking Detail Page" >
+    <apex:form >
+        <apex:sectionHeader title="Booking Details Form" />
+        <apex:pageBlock title="Booking" >
+          	<apex:pageBlockSection columns="2">
+                
+               	<apex:outputField value="{!Booking__c.Name}"/>
+                <apex:outputField value="{!Booking__c.Email__c}"/>
+                <apex:outputField value="{!Booking__c.RoomNo__c}"/>
+                <apex:outputField value="{!Booking__c.Status__c}"/>
+                <apex:outputField value="{!Booking__c.Amount__c}"/>
+                <apex:outputField value="{!Booking__c.Check_In_Time__c}"/>
+                <apex:outputField value="{!Booking__c.Check_Out_Time__c}"/>
+                <apex:outputField value="{!Booking__c.Customer__c}"/>
+                
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock> 
+    </apex:form>
+</apex:page>

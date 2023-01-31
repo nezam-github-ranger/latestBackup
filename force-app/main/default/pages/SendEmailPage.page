@@ -1,0 +1,50 @@
+<apex:page controller="SendEmailController" title="Send Email">
+    <apex:form id="frm">
+        <apex:actionFunction action="{!checkBoxClick}" name="checkBoxClick" reRender="frm" >
+        	<apex:param assignTo="{!selectedEmail}" value="Contact" name="Arg1"/>
+        </apex:actionFunction>
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Assign To : </apex:outputLabel>
+                    <apex:inputText value="{!selectedEmail}" size="150" disabled="true"/>
+                </apex:pageBlockSectionItem> <br/>
+                
+               <!-- <apex:pageBlockSectionItem >
+                    <apex:outputLabel > Cc : </apex:outputLabel>
+                    <apex:inputText value="{!ccEmail}" size="150" />
+                </apex:pageBlockSectionItem> <br/>
+                
+                 <apex:pageBlockSectionItem >
+                    <apex:outputLabel > Bcc : </apex:outputLabel>
+                    <apex:inputText value="{!bccEmail}" size="150" />
+                </apex:pageBlockSectionItem> <br/>  -->
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Subject : </apex:outputLabel>
+                    <apex:inputText value="{!emailSubject}" />
+                </apex:pageBlockSectionItem> <br/>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Body : </apex:outputLabel>
+                    <apex:inputTextarea value="{!emailBody}" />
+                </apex:pageBlockSectionItem>
+               
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    	<apex:pageBlock id="frm">
+        	<apex:pageBlockTable value="{!modelList}" var="con">
+                <apex:column headerValue="#" value="{!con.serialNo}" />
+                <apex:column headerValue="Action">
+                	<apex:inputCheckbox value="{!con.check}" onclick="checkBoxClick('{!con.conModelObject.Email}');" />
+                </apex:column>
+            	<apex:column value="{!con.conModelObject.Name}" />
+                <apex:column value="{!con.conModelObject.Email}" />
+                <apex:column value="{!con.conModelObject.Phone}"/>
+            </apex:pageBlockTable>  
+            <apex:pageBlockButtons >
+            	<apex:commandButton action="{!send}" value="Send" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

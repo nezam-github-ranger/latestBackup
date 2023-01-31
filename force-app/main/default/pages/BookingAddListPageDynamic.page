@@ -1,0 +1,33 @@
+<apex:page controller="AddMultipleAccountController">
+    <apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!ListAccount}" var="a" >
+            <apex:column headerValue="Booking Id">
+                <apex:inputField value="{!a.Name}"/>
+            </apex:column>
+            <apex:column headerValue="Customer Name">
+                <apex:inputField value="{!a.Customer__c}"/>
+            </apex:column>
+            <apex:column headerValue="Email">
+                <apex:inputField value="{!a.Email__c}"/>
+            </apex:column>
+            <apex:column headerValue="Room No">
+                <apex:inputField value="{!a.RoomNo__c}"/>
+            </apex:column>
+            <apex:column headerValue="Status">
+                <apex:inputField value="{!a.Status__c}"/>
+            </apex:column>
+            <apex:column headerValue="Check In Time">
+                <apex:inputField value="{!a.Check_In_Time__c}"/>
+            </apex:column>
+            <apex:column headerValue="Check Out Time">
+                <apex:inputField value="{!a.Check_Out_Time__c}"/>
+            </apex:column>
+        </apex:pageBlockTable>
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Add Booking Row" action="{!addAccount}"/>
+            <apex:commandButton value="Save Booking" action="{!saveAccount}"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <description>The first aura component that displays the 10 newest contacts in the account details page according to the account contacts is shown.</description>
+</AuraDefinitionBundle>

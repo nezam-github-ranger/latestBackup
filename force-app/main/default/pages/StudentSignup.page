@@ -1,0 +1,50 @@
+<apex:page controller="StudentSignupController" showHeader="false" title="Signup" >
+    <apex:form >
+        <apex:sectionHeader title="Student Signup" />
+        <apex:pageBlock >
+            <apex:pageMessages />
+            <apex:pageBlockSection >
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Name</apex:outputLabel>
+                    <apex:inputField value="{!contactSignup.LastName}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Father Name</apex:outputLabel>
+                    <apex:inputField value="{!contactSignup.Father_Name__c}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >DOB</apex:outputLabel>
+                    <apex:inputField value="{!contactSignup.Birthdate}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Phone</apex:outputLabel>
+                    <apex:inputField value="{!contactSignup.Phone}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Password</apex:outputLabel>
+                    <apex:inputField value="{!contactSignup.Password__c}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Email</apex:outputLabel>
+                    <apex:inputField value="{!contactSignup.Email}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Address</apex:outputLabel>
+                    <apex:inputField value="{!contactSignup.Address__c}" />
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!doSave}" style="margin-left:140px" />    
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

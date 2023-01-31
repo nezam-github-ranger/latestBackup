@@ -1,0 +1,153 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open active-section-name={activeSections} >
+		<template if:true={showData} for:each={showData} for:item="show">
+			
+		</template>
+    </lightning-accordion>
+
+	<lightning-accordion allow-multiple-sections-open active-section-name={activeSections} >
+		<template if:true={completedShows} for:each={completedShows} for:item="show" for:index="index">
+			<ul key={show.movie}>
+        		<lightning-accordion-section name="A" label={show.status} onclick={onclickHandle}>
+					<lightning-accordion-section name="A" label={show.movie} onclick={onclickHandle}>
+						<li>
+							<div class="slds-timeline__item_expandable slds-timeline__item_task slds-is-open">
+								<div class="slds-media">
+									<div class="slds-media__figure">
+										<button class="slds-button slds-button_icon" title="Toggle details for Review proposals for EBC deck with larger team and have marketing review this" aria-controls="task-item-error" aria-expanded="true">
+											<svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true"></svg>
+										</button>
+										<div class="slds-icon_container slds-icon-standard-task slds-timeline__icon" title="task">
+											<svg class="slds-icon slds-icon_small" aria-hidden="true"></svg>
+										</div>
+									</div>
+									<div class="slds-media__body">
+										<div class="slds-grid slds-grid_align-spread slds-timeline__trigger"></div>
+										<div class="slds-timeline__actions slds-timeline__actions_inline">
+											<p class="slds-timeline__date">9:00am | 3/20/17</p>
+										</div>
+										<div class="slds-box">
+											<template for:each={show.category} for:item="category" for:index="index">
+												<div key={category}>
+													<p>Category <span style="margin-left:330px">Seat No# </span></p><br/>
+													<b>{category}</b>
+													<template for:each={show.seats} for:item="seats" for:index="index">
+														<div key={seats}>
+															<span class="slds-badge" style="margin-left:300px" >{seats}</span>
+														</div>
+													</template>
+												</div>
+											</template>
+											<br/><br/>
+											<p>Paid Amount</p><br/>
+											<b>{show.amount}</b>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>	
+					</lightning-accordion-section>	            
+        		</lightning-accordion-section>
+			</ul>
+		</template>
+    </lightning-accordion>
+
+	<hr/>
+	<lightning-accordion allow-multiple-sections-open active-section-name={activeSections} >
+		<template if:true={upcomingShows} for:each={upcomingShows} for:item="show" for:index="index">
+			<ul key={show.movie}>
+        		<lightning-accordion-section name="A" label={show.status} onclick={onclickHandle}>
+					<lightning-accordion-section name="A" label={show.movie} onclick={onclickHandle}>
+						<li>
+							<div class="slds-timeline__item_expandable slds-timeline__item_task slds-is-open">
+								<div class="slds-media">
+									<div class="slds-media__figure">
+										<button class="slds-button slds-button_icon" title="Toggle details for Review proposals for EBC deck with larger team and have marketing review this" aria-controls="task-item-error" aria-expanded="true">
+											<svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true"></svg>
+										</button>
+										<div class="slds-icon_container slds-icon-standard-task slds-timeline__icon" title="task">
+											<svg class="slds-icon slds-icon_small" aria-hidden="true"></svg>
+										</div>
+									</div>
+									<div class="slds-media__body">
+										<div class="slds-grid slds-grid_align-spread slds-timeline__trigger"></div>
+										<div class="slds-timeline__actions slds-timeline__actions_inline">
+											<p class="slds-timeline__date">9:00am | 3/20/17</p>
+										</div>
+										<div class="slds-box">
+											<template for:each={show.category} for:item="category" for:index="index">
+												<div key={category}>
+													<p>Category <span style="margin-left:330px">Seat No# </span></p><br/>
+													<b>{category}</b>
+													<template for:each={show.seats} for:item="seats" for:index="index">
+														<div key={seats}>
+															<span class="slds-badge" style="margin-left:300px" >{seats}</span>
+														</div>
+													</template>
+												</div>
+											</template>
+											<br/><br/>
+											<p>Paid Amount</p><br/>
+											<b>{show.amount}</b>
+											<lightning-button variant="brand" label="Cancel" title={show.movie} data-booking={show.seatBookingId} onclick={handleCancel} class="slds-m-left_x-small" style="margin-left:270px;"></lightning-button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>	
+					</lightning-accordion-section>	            
+        		</lightning-accordion-section>
+			</ul>
+		</template>
+    </lightning-accordion>
+
+	<hr/>
+	<lightning-accordion allow-multiple-sections-open active-section-name={activeSections} >
+		<template if:true={canceledShows} for:each={canceledShows} for:item="show" for:index="index">
+			<ul key={show.movie}>
+        		<lightning-accordion-section name="A" label={show.status} onclick={onclickHandle}>
+					<lightning-accordion-section name="A" label={show.movie} onclick={onclickHandle}>
+						<li>
+							<div class="slds-timeline__item_expandable slds-timeline__item_task slds-is-open">
+								<div class="slds-media">
+									<div class="slds-media__figure">
+										<button class="slds-button slds-button_icon" title="Toggle details for Review proposals for EBC deck with larger team and have marketing review this" aria-controls="task-item-error" aria-expanded="true">
+											<svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true"></svg>
+										</button>
+										<div class="slds-icon_container slds-icon-standard-task slds-timeline__icon" title="task">
+											<svg class="slds-icon slds-icon_small" aria-hidden="true"></svg>
+										</div>
+									</div>
+									<div class="slds-media__body">
+										<div class="slds-grid slds-grid_align-spread slds-timeline__trigger"></div>
+										<div class="slds-timeline__actions slds-timeline__actions_inline">
+											<p class="slds-timeline__date">9:00am | 3/20/17</p>
+										</div>
+										<div class="slds-box">
+											<template for:each={show.category} for:item="category" for:index="index">
+												<div key={category}>
+													<p>Category <span style="margin-left:330px">Seat No# </span></p><br/>
+													<b>{category}</b>
+													<template for:each={show.seats} for:item="seats" for:index="index">
+														<div key={seats}>
+															<span class="slds-badge" style="margin-left:300px" >{seats}</span>
+														</div>
+													</template>
+												</div>
+											</template>
+											<br/><br/>
+											<p>Paid Amount</p><br/>
+											<b>{show.amount}</b>
+											<lightning-button variant="brand" label="Cancel" title={show.movie} data-booking={show.seatBookingId} onclick={handleCancel} class="slds-m-left_x-small" style="margin-left:270px;"></lightning-button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>	
+					</lightning-accordion-section>	            
+        		</lightning-accordion-section>
+			</ul>
+		</template>
+    </lightning-accordion>
+
+</template>

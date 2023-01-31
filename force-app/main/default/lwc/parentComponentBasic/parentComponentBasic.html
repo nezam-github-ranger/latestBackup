@@ -1,0 +1,13 @@
+<template>
+    <lightning-card  >
+    
+        <c-child-Component-Basic oncallpasstoparent={passToParent} ></c-child-Component-Basic>
+        <p>---------------------------------------------------------------------</p><br/><br/>
+        <p class="slds-p-horizontal_small">This is Parent Component Body!</p>
+        <p slot="footer">Parent Component Footer!</p>
+
+        Values From Child ==> {barVal}
+        
+    </lightning-card>
+
+</template>

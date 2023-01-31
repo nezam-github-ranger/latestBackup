@@ -1,0 +1,18 @@
+<apex:page standardController="Booking__c" recordSetVar="book" renderAs="pdf">  <!-- contenttype="application/vnd.ms-excel#ContactSheet.xls" showheader="false" >   renderAs="{!if($CurrentPage.parameters.isPdf == null, null, 'pdf')}" contentType="{!if($CurrentPage.parameters.isWord == null, if($CurrentPage.parameters.isExcel == null, null ,'application/vnd.ms-excel#fileName.xls'),'application/x-excel#FileName.doc')}" >  -->
+    <apex:form > 
+        <apex:pageBlock >
+           <!-- <apex:pageblockButtons >
+                <apex:commandButton value="pdf" action="/apex/automatic_insert?isPdf=true"/>
+                <apex:commandButton value="word" action="/apex/automatic_insert?isWord=ture"/>
+                <apex:commandButton value="excel" action="/apex/automatic_insert?isExcel=ture"/>
+            </apex:pageblockButtons> -->
+            <apex:pageBlockTable value="{!book}" var="b">
+                <apex:column value="{!b.Email__c}"/>
+                <apex:column value="{!b.RoomNo__c}"/>
+                <apex:column value="{!b.Total_Hours__c}"/>
+                <apex:column value="{!b.Status__c}"/>
+                <apex:column value="{!b.Amount__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

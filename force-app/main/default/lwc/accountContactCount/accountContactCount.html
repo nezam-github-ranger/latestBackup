@@ -1,0 +1,22 @@
+<template>
+	<lightning-card title="">
+		<input type="checkbox" onclick={checkboxHandler} value={}/> <b>Show Counts</b>
+		<table border="2px" cellspacing="10px" cellpading="10px"  style="align:center;" >
+			<tr>
+				<th>Account Name</th>
+				<th if:true={isChecked}>Contacts Count</th>
+			</tr>
+			<template for:each={accounts.data} for:item="accObj">
+				<tr key={accObj.acc.Id}>
+					<td>{accObj.acc.Name}</td>
+					<td if:true={isChecked}>{accObj.totalContacts}</td>
+				</tr>
+			</template>
+			<template if:true={accounts.error}>
+				<tr>
+					<td class="error">{accounts.error}</td>
+				</tr>
+			</template>
+		</table>
+	</lightning-card>
+</template>

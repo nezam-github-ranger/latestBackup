@@ -1,0 +1,12 @@
+<apex:page controller="AccountContactController" title="Contact Details">
+    
+    <apex:pageBlock tabStyle="Contact" title="Contact Details">
+    	<apex:pageBlockTable value="{!contactList}" var="con">
+            <apex:column value="{!con.Name}" />
+            <apex:column value="{!con.Email}" />
+            <apex:column value="{!con.Fax}" />
+            <apex:column value="{!con.Phone}" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    <c:AccountCommonDetails accObject="{!contactList[0].AccountId}"  />
+</apex:page>

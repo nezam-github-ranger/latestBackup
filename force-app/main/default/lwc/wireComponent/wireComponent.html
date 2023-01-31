@@ -1,0 +1,34 @@
+<template>
+    <lightning-card>
+        <lightning-combobox
+            label="Account"
+            value={value}
+            placeholder="Select Account"
+            options={options}
+            onchange={handleChange} >
+        </lightning-combobox>
+    </lightning-card>
+
+    value : {value}
+
+    <lightning-card>
+        <table border="2px" align="center">
+            <tr align="center">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Fax</th>
+                <th>Account Name</th>
+            </tr>
+            <template if:true={contactList.data} for:each={contactList.data} for:item="contact">
+                <tr key={contact.Id} >
+                    <td>{contact.Name}</td>
+                    <td>{contact.Email}</td>
+                    <td>{contact.Phone}</td>
+                    <td>{contact.Fax}</td>
+                    <td>{contact.Account.Name}</td>
+                </tr>
+            </template>
+        </table>
+    </lightning-card>
+</template>

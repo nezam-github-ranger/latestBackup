@@ -1,0 +1,46 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+        <h1 style="font-size: 2em;" > OTP Code </h1>
+
+        <div class="slds-grid slds-wrap slds-box slds-box_x-small">
+            <template for:each={storeAllOTPValues} for:item="item" for:index="index">
+                <div class="slds-m-around_x-small" key={item.id}>
+                    <lightning-input value={item.value} type={item.type} style={item.style} maxlength={item.maxlength} class={item.class} name={item.name} id={item.id} onkeyup={handleOTP1} ></lightning-input>
+                </div>
+            </template>
+        <div class="slds-m-top-small">
+            <lightning-button variant="brand-outline" label="Continue" title="Continue Button" onclick={handleContinue}></lightning-button>
+        </div>
+            <!--
+            <div class="slds-m-around_x-small">
+                    <lightning-input type="text" style="width: 80px !important;" maxlength="1" class="classInputli1" name="classInputli1" id="otp1" onkeyup={handleOTP1} ></lightning-input>
+                </div>
+            <div class="slds-m-around_x-small">
+                <lightning-input type="text" style="width: 80px !important;" maxlength="1" class="classInputli2" name="classInputli2" id="otp2" onkeyup={handleOTP1} ></lightning-input>
+            </div>
+            <div class="slds-m-around_x-small">
+                <lightning-input type="text" style="width: 80px !important;" maxlength="1" class="classInputli3" name="classInputli3" id="otp3" onkeyup={handleOTP1} ></lightning-input>
+            </div>
+            <div class="slds-m-around_x-small">
+                <lightning-input type="text" style="width: 80px !important;" maxlength="1" class="classInputli4" name="classInputli4" id="otp4" onkeyup={handleOTP1}  ></lightning-input>
+            </div>
+            <div class="slds-m-around_x-small">
+                <lightning-button variant="brand-outline" label="Continue" title="Continue Button" onclick={handleContinue}></lightning-button>
+            </div> 
+            -->
+            
+        </div>
+
+        <div class="container" style="margin: 2%">
+        a: <input type="text" maxlength="1"  style="width:50px" class="classInput1" id="idInput1" onkeyup={callOnKeyUp} />
+        b: <input type="text" maxlength="1"  style="width:50px" class="classInput2" id="idInput2" onkeyup={callOnKeyUp} />
+        c: <input type="text" maxlength="1"  style="width:50px" class="classInput3" id="idInput3" onkeyup={callOnKeyUp} />
+        </div>
+        <lightning-layout>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="success" onclick={handleSubmit} name="submit" label="Submit">
+                </lightning-button>
+            </div>
+        </lightning-layout>
+    </lightning-card>
+</template>

@@ -1,0 +1,12 @@
+<apex:page >
+    <div class="row">
+        <div class="col-1">
+            <div class="col-1 tooltip">
+                <c:hoverTextExample helpText="Here is the simple help text."/>
+                <h4>
+                    <b>Financial Sources</b>
+                </h4>
+            </div>
+        </div>
+    </div>
+</apex:page>

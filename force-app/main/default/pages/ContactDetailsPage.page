@@ -1,0 +1,15 @@
+<apex:page controller="ContactDetailsController" title="Contacts" tabStyle="Contact">
+    <apex:form >
+        <apex:sectionHeader title="Contacts" subtitle="Search" />
+        <apex:pageBlock >
+            <apex:inputText value="{!inputText}" html-placeholder="Search..." /> &nbsp;&nbsp;
+            <apex:commandButton value="Search" action="{!searchMethod}"/> <br/><br/>
+            <apex:pageBlockTable value="{!contactList}" var="con" >
+                <apex:column value="{!con.Name}" />
+                <apex:column value="{!con.Email}" />
+                <apex:column value="{!con.AccountId}" />
+                <apex:column value="{!con.Phone}" />
+            </apex:pageBlockTable>	
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,5 @@
+<apex:page title="Visualforce Component"> 
+    <apex:pageBlock title="Details Page">
+    	<c:ShowObjectDetailsComponent objectName="Account"  />
+    </apex:pageBlock>
+</apex:page>

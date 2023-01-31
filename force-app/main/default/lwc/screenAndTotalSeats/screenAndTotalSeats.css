@@ -1,0 +1,5 @@
+.custom_border { border-radius: 6px !important} 
+.selected_seat{
+    background:red !important;
+    cursor:not-allowed !important;
+}

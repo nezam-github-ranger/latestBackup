@@ -1,0 +1,60 @@
+<apex:page controller="PdfSaveOnRefreshController" renderAs="{!isPdf}" contentType="{!if($CurrentPage.parameters.isWord == null, if($CurrentPage.parameters.isExcel == null, null ,'application/vnd.ms-excel#fileName.xls'),'application/x-excel#FileName.doc')}" >
+    <apex:form >
+        <apex:pageBlock >
+        	<img src="{!$Resource.DefaultImage}" height="90" width="90" />
+            <h2 style="color:blue">Your Company</h2>
+            <div style="margin-left:30px; margin-top:40px">
+             	InvoiCe For ClienT's Name <br/>
+                Address LiNe 1 <br/>
+                Address Line 2 <br/>
+                City, State, Zip, Postal   
+            </div>
+            <div style="margin-left:470px; margin-top:0px;" >
+                Address : Your Company <br/>
+                Address : Line 1 <br/>
+                Address : Line 2 <br/>
+                City, State, Zip, Postal Code
+            </div>
+            <h1 style="color:blue"> INVOICE	</h1>
+            <hr style="color:blue" />
+            <div>
+                Invoice PhoneNo : xxxxxxxxxxxxxxxxxxxx <br/>  <br/>
+                PO Number :     xxxxxxxxxxxxxxxxxx   <br/>  <br/>
+                ReffErence : xxxxxxxxxxxxx  <br/>  <br/>
+                Date : xxxxxxxxxxxxxx   <br/>  <br/>
+                Payment Due By : xxxxxxxxxxxxxxxx   <br/>  <br/>
+            </div>
+            
+            <hr style="color:blue" />
+            <table border="2px" align="center">
+                <tr style="color:blue">
+                    <th>DESCRIPTION</th>
+                    <th>QUANTITY</th>
+                    <th>UNIT PRICE</th>
+                    <th>PRICE</th>
+                </tr>
+                <tr>
+                    <td>Provided Services Description (Date Image)</td>
+                    <td>1</td>
+                    <td>$0.00</td>
+                	<td>$0.00</td>
+                </tr>
+            </table>
+            
+            <div style="margin-top:50px">
+                <b>Payment Terms : </b>Payment Within 30 Days <br/> <br/>
+                <b>Payment Terms : </b> <br/> <br/>
+                Money Transfer TO Account Below: <br/> <br/>
+                <b> Bank : </b>  Bank Account Name <br/> <br/>
+                <b>Bank/Sort Code :  </b> Xx-xx-xx <br/> <br/>
+                <b>BIC : </b> BAnk BIC Code	 <br/> <br/>
+                
+            </div>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="PDF" action="{!pdfMethod}"  />
+                <apex:commandButton value="Word" action="/apex/PdfSaveOnRefresh?isWord=true"  />
+                <apex:commandButton value="Excel" action="/apex/PdfSaveOnRefresh?isExcel=true"  />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

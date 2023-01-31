@@ -1,0 +1,42 @@
+<apex:page controller="StudentListPage1Controller" title="StudentListPage1">
+    <apex:form >
+        <!--<apex:actionFunction action="checkedIdFun" name="checkedId" >
+        	<apex:param assignTo="{!checkIds}" value="Student__c" />
+        </apex:actionFunction> -->
+        <apex:pageMessages />
+    	<apex:sectionHeader title="Student Detail Page" />
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!studentList}" var="stu" >
+                <apex:column headerValue="Action">
+                    <input type="checkbox" name="{!stu.Id}" value="{!stu.Id}"  />
+                </apex:column>
+                <apex:column headerValue="Student Id">
+                    <apex:inputField value="{!stu.id}"/>
+                </apex:column>
+                <apex:column headerValue="Student First Name">
+                    <apex:inputField value="{!stu.First_Name__c}"/>
+                </apex:column>
+                <apex:column headerValue="Last Name">
+                    <apex:inputField value="{!stu.Last_Name__c}" required="false" />
+                </apex:column>
+                <apex:column headerValue="Class">
+                    <apex:inputField value="{!stu.Class__c}" required="false"/>
+                </apex:column>
+                <apex:column headerValue="Date Of Birth">
+                    <apex:inputField value="{!stu.Date_Of_Birth__c}"/>
+                </apex:column>
+                <apex:column headerValue="Email">
+                    <apex:inputField value="{!stu.Email__c}"/>
+                </apex:column>
+                <apex:column headerValue="Gender">
+                    <apex:inputField value="{!stu.Sex__c}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" />
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

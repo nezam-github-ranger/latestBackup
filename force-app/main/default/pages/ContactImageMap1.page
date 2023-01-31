@@ -1,0 +1,15 @@
+<apex:page controller="ContactImageMapControllerBackup" >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!conModel}" var="con">
+                <apex:column headerValue="SNo." value="{!con.serialNo}" />
+                <apex:column headerValue="Contacts" value="{!con.conObj.Name}" />
+                <apex:column headerValue="Attachments">
+                    <apex:image value="{!$Resource.DefaultImage}" rendered="{!con.isImage == false}" height="50" width="50" /> 
+                	<apex:image value="/servlet/servlet.FileDownload?file={!con.attObj.Id}" rendered="{!con.isImage}" height="50" width="50" /> 
+                </apex:column>
+                
+            </apex:pageBlockTable>       
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

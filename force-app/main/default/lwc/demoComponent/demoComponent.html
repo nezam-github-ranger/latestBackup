@@ -1,0 +1,45 @@
+<template>
+    <lightning-card title="@track Properties">
+        <input type="text" onkeyup={handleValue}>
+        <br/>
+        Car company is {car}.
+        <br/>
+        Car company is {carObj.model}.
+        <br/>
+        Sum of {num1} and {n2} is {sum}
+    </lightning-card>
+
+    
+    <lightning-card title="Looping Directive">
+        <ul class="slds-has-dividers_around-space">
+        <template for:each={person} for:item="per" for:index="index">
+            <li key={per} class="slds-item">{per}</li>
+        </template>
+    </ul>
+    </lightning-card>
+
+    <lightning-card title="ForEach on Object Array">
+        <ul class="slds-has-dividers_around-space">
+        <template for:each={personsArr} for:item="perObj" >
+            <li key={perObj.id} class="slds-item">{perObj.name} {perObj.age}</li>
+        </template>
+    </ul>
+    </lightning-card>
+    
+    <lightning-card title="Iterator">
+        <ul class="slds-has-dividers_around-space">
+        <template iterator:per={personsArr}>
+            <li key={per.value.id} class="slds-item">
+            <div if:true={per.first} class="first">
+                It is first item.    
+            </div>
+                {per.value.id} {per.value.name} {per.value.age}
+            <div if:true={per.last} class="last"> 
+                It is a last Item
+            </div>
+            </li>
+        </template>
+    </ul>
+    </lightning-card>
+
+</template>

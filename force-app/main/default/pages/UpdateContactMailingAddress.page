@@ -1,0 +1,68 @@
+<apex:page controller="UpdateContactMailingAddressController">
+    <apex:form >
+        <apex:actionFunction action="{!loadCountryDetails}" name="loadCountryDetails" />
+        
+        <apex:pageBlock title="Select Account">
+            Account : 
+            <apex:selectList size="1" value="{!selectedAccount}" onchange="loadCountryDetails();">
+                <apex:selectOptions value="{!accountOptions}"></apex:selectOptions>
+            </apex:selectList>
+        </apex:pageBlock>
+        
+        <apex:pageBlock rendered="{!show}" title="Enter Details">
+            <apex:pageBlockTable value="{!accountObj}" var="acc" >
+                <apex:column headerValue="Billing Street">
+                    <apex:inputField value="{!acc.BillingStreet}"/>
+                </apex:column>
+              	
+                <apex:column headerValue="Billing City">
+                    <apex:inputField value="{!acc.BillingCity}"/>
+                </apex:column>
+                
+                <apex:column headerValue=" Billing State/Province">
+                    <apex:inputField value="{!acc.BillingState}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Billing Zip/Postal Code">
+                    <apex:inputField value="{!acc.BillingPostalCode}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Billing Country">
+                    <apex:inputField value="{!acc.BillingCountry}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Submit" action="{!Submit}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+        <apex:pageBlock rendered="{!show}" title="Updated Record">
+            <apex:pageBlockTable value="{!contactList}" var="con" >
+                <apex:column headerValue="Contact Name">
+                    <apex:outputField value="{!con.Name}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Mailing Street">
+                    <apex:outputField value="{!con.MailingStreet}"/>
+                </apex:column>
+              	
+                <apex:column headerValue="Mailing City">
+                    <apex:outputField value="{!con.MailingCity}"/>
+                </apex:column>
+                
+                <apex:column headerValue=" Mailing State/Province">
+                    <apex:outputField value="{!con.MailingState}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Mailing Zip/Postal Code">
+                    <apex:outputField value="{!con.MailingPostalCode}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Mailing Country">
+                    <apex:outputField value="{!con.MailingCountry}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+    </apex:form>           
+</apex:page>

@@ -1,0 +1,28 @@
+<apex:page controller="StudentSignupController" showHeader="false" title="Login" >
+    <apex:form >
+        <apex:sectionHeader title="Student Login"/>
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >User Name</apex:outputLabel>
+                    <apex:inputText value="{!contactLogin.Email}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Password</apex:outputLabel>
+                    <apex:inputText value="{!contactLogin.Password__c}" />
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+            
+            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Login" action="{!doLogin}" style="margin-left:140px" /> <br/><br/>
+                <a href="https://communitydomaindemo-developer-edition.ap24.force.com/ibirds/StudentSignUp" style="margin-left:140px"> Signup</a>
+                
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

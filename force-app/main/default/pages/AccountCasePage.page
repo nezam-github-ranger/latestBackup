@@ -1,0 +1,12 @@
+<apex:page controller="AccountCaseController" title="Case Details">
+    
+    <apex:pageBlock tabStyle="Case" title="Case Details">
+    	<apex:pageBlockTable value="{!caseList}" var="ca">
+         	<apex:column value="{!ca.Type}" /> 
+            <apex:column value="{!ca.Status}"/>
+            <apex:column value="{!ca.Reason}"/>
+            <apex:column value="{!ca.Origin}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    <c:AccountCommonDetails accObject="{!caseList[0].AccountId}" />
+</apex:page>

@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+        <div if:true={isSubmitClick}>
+            <lightning-icon icon-name="custom:custom11" ></lightning-icon>
+            <b>Country Details</b> <br/><br/>
+            <p>Countries Visited : {countryNames}</p>
+            <p>Total : {numberOfCountry}</p>
+        </div>
+    
+    <c-child-number-of-country onnezam={showDetails} ></c-child-number-of-country>
+    </lightning-card>
+</template>

@@ -1,0 +1,63 @@
+<template>
+    <lightning-card  title="Two Way Binding">
+        <div class="slds-box firstDiv">
+            <p>Hello, {name}</p>
+            <p>Hi, {person.name}</p>
+            <input type="text" onkeyup={handleValue}></input>
+        </div>
+        <div class="slds-box secondDiv">
+            Hello Dear, {personName}
+            <!--Sum of : {num1} and {num2} is {sum}-->
+        </div>
+    </lightning-card>
+    <br/>
+
+    <lightning-card  title="Conditinal Rerendering"> 
+        <lightning-button 
+            variant="success" 
+            label="Success" 
+            title="Successful action" 
+            onclick={handleClick} 
+            class="slds-m-left_x-small">
+        </lightning-button>
+
+        <lightning-input
+            type="checkbox"
+            label="Checkbox"
+            onchange={handleClick}
+            checked={isVisible}
+        >
+        </lightning-input> 
+            
+        <div class="slds-m-around_x-small divForRendering">
+            <template if:false={isVisible} >
+                It is false 
+            </template>
+            <template if:true={isVisible} >
+                It is true
+            </template>
+        </div>
+    </lightning-card>
+
+    <lightning-card variant="brand" title="User Details" >
+        <template for:each={personsArr} for:item="arr" for:index="index">
+            <ul key={arr.Name} class="iteratorList">
+                <li class="slds-p-around_medium">
+                    Name : {arr.name}
+                </li>
+            </ul>
+        </template>
+    </lightning-card>
+
+    <lightning-card variant="brand" title="User Details" >
+        <template for:each={personsArr} for:item="arr" for:index="index">
+            <ul key={arr.Name} class="ulList">
+                <li class="slds-p-around_medium">
+                    <div>This is {index} Div</div>
+                    <div>Name : {arr.name}</div>
+                </li>
+            </ul>
+        </template>
+    </lightning-card>
+
+</template>

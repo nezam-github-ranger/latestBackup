@@ -1,0 +1,19 @@
+<apex:component controller="VisualforceComponentController">
+    <apex:attribute name="objectName" type="String" description="" required="true" assignTo="{!objectVal}" />
+    
+    <!-- <apex:outputLabel ><center><b> {!objectName} Details Page </b> </center> </apex:outputLabel> -->
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!sobjectList}" var="sobj" first="{!first}" rows="{!rows}" >
+                <apex:column value="{!sobj['Name']}" />
+                <apex:column value="{!sobj['Phone']}" />
+            </apex:pageBlockTable> 
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="First" action="{!first}" />
+                <apex:commandButton value="Next" action="{!next}" />
+                <apex:commandButton value="prev" action="{!previous}" />
+                <apex:commandButton value="Last" action="{!last}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock> 
+    </apex:form>
+</apex:component>

@@ -1,0 +1,24 @@
+<apex:page controller="CountryController1" title="Country State City">
+    <apex:form id="form"  >
+        <apex:actionStatus id="countryStatus" startStyle="color:red" startText="Loading..."  ></apex:actionStatus>
+        <apex:actionFunction action="{!fetchStates}" reRender="form" name="loadStates" status="countryStatus" />
+        <apex:actionFunction action="{!fetchCities}" reRender="form" name="loadCities" status="countryStatus" />
+    	<apex:pageBlock >
+        	<b>Country : </b> 
+        	<apex:selectList size="1" value="{!selectedCountry}" onchange="loadStates();">
+                <apex:selectOptions value="{!countryOptions}"></apex:selectOptions>
+            </apex:selectList>
+            
+            <b>State : </b>
+        	<apex:selectList size="1" value="{!selectedState}" onchange="loadCities();">
+                <apex:selectOptions value="{!stateOptions}"></apex:selectOptions>
+            </apex:selectList>
+            
+            <b>City : </b>
+        	<apex:selectList size="1" value="{!selectedCity}">
+                <apex:selectOptions value="{!cityOptions}"></apex:selectOptions>
+            </apex:selectList>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

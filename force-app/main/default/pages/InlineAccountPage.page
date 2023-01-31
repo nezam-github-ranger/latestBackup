@@ -1,0 +1,39 @@
+<apex:page standardController="Account" extensions="InlineAccountPageController" title="Inline Account Page">
+    <apex:form >
+        <apex:actionFunction action="{!checkboxAllAccountSelect}" name="checkboxAllAccountSelect" />
+        <apex:actionFunction action="{!checkboxAllSelect}" name="checkboxAllSelect" />
+        <apex:actionFunction action="{!checkboxSingleAccountSelect}" name="checkboxSingleAccountSelect" />
+        <apex:actionFunction action="{!checkboxSingleSelect}" name="checkboxSingleSelect" />
+        
+        <apex:pageBlock id="frm">
+            <apex:pageBlockSection >
+                <apex:pageBlock title="Total Account Contact : {!totalNumberOfAccountContact}" >
+                    <apex:pageBlockTable value="{!contactModelList}" var="con" title="Related Contact" >
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:inputCheckbox value="{!checkAllAccountContacts}" onchange="checkboxAllAccountSelect();" />
+                            </apex:facet>
+                            <apex:inputCheckbox value="{!con.contactCheckbox}" onchange="checkboxSingleAccountSelect();" />
+                        </apex:column>
+                        <apex:column value="{!con.contactObj.Name}" />
+                    </apex:pageBlockTable>
+                    <apex:commandButton value="Remove" action="{!remove}"/>         
+                </apex:pageBlock>
+                
+                <apex:pageBlock title="Total Contact : {!totalNumberOfContact}">
+                    <apex:pageBlockTable value="{!allContactModelList}" var="con" title="All Contact">
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:inputCheckbox value="{!checkAllContacts}" onchange="checkboxAllSelect();" />
+                            </apex:facet>
+                            <apex:inputCheckbox value="{!con.contactCheckbox}" onchange="checkboxSingleSelect();" />
+                        </apex:column>
+                        <apex:column value="{!con.contacts.Name}" />
+                    </apex:pageBlockTable>
+                    <apex:commandButton value="Add" action="{!add}" reRender="frm" />
+                </apex:pageBlock>
+                <apex:commandButton value="Submit" action="{!submit}" reRender="frm" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

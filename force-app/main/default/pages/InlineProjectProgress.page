@@ -1,0 +1,23 @@
+<apex:page controller="ProgressBarController" >
+    <apex:slds />
+    <apex:form id="frm">
+        <apex:actionPoller action="{!checkStatus}" enabled="{!bProcess}" interval="5" reRender="frm" />
+        
+        <div class="slds-grid slds-gutters" style="margin-left:1%;">
+            <div class="slds-col slds-size_1-of-3">
+                <h1 style=" font-weight: bold;">
+                    Progress Bar Demo in Visualforce Page
+                </h1>
+                <div style="display: block; margin-top:5%;" class="slds-progress-bar slds-progress-bar_circular" aria-valuemin="0" aria-valuemax="100"
+                     aria-valuenow="{!deProgressBarWidth}" role="progressbar">
+                    <span class="slds-progress-bar__value slds-progress-bar__value_success" style="width: {!deProgressBarWidth}%;">
+                        <span class="slds-assistive-text">Progress: {!deProgressBarWidth}%</span>
+                    </span>
+                    <div class="slds-text-align--center slds-text-title" style="color:forestgreen;">
+                        {!strStatus}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:form>
+</apex:page>

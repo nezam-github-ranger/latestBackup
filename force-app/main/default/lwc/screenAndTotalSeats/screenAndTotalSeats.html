@@ -1,0 +1,47 @@
+<template>
+    <lightning-card>
+        <div class="slds-box" style="margin: 15px;padding: 5px;text-align: center;border-radius: 15px;" >SCREEN</div>
+        <template if:true={seatShowList} for:each={seatShowList} for:item="seatDetail" for:index="index">
+            <div class="slds-border_bottom" key={seatDetail.Name}>
+                <b style="margin-left:20px;font-size:15px">{seatDetail.Name}</b>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_12-of-12 slds-grid slds-wrap" style="margin-top: 10px;padding: 10px;">
+                        <template for:each={seatDetail.Seats__r} for:item="seat" for:index="index">
+                            <div key={seat.Name} class="changeBackground">
+                                <div class="slds-col slds-small-size_1-of-12 slds-medium-size_1-of-12 slds-large-size_1-of-12 slds-box"
+                                     style="margin-left:5px;background:rgb(8, 114, 8);width: 85px;color: white;"
+                                    onclick={selectHandle}  title={seatDetail.Name} data-label={seat.Name} data-price={seatDetail.Price__c} data-categoryid={seat.Seat_Category__c} data-seatid={seat.Id} >
+                                    {seat.Name}
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template if:true={showToastBar}>
+            <div class="slds-notify_container">
+                <div class={outerClass} role="status">
+                    <span class="slds-assistive-text">{type}</span>
+                    <span class={innerClass} title={message}>
+                        <lightning-icon icon-name={getIconName} alternative-text="icon" styleclass="slds-icon slds-icon_small" variant="inverse" size="small"></lightning-icon>
+                    </span>
+                    <div class="slds-notify__content">
+                        <h2 class="slds-text-heading_small">{message}</h2>
+                    </div>
+                    <div class="slds-notify__close">
+                        <lightning-button-icon icon-name="utility:close" size="small" variant="border-filled" class="slds-button slds-button_icon slds-button_icon-inverse" alternative-text="next" onclick={closeModel} ></lightning-button-icon>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <div class="slds-m-vertical_small" align="center">
+            <span class="slds-theme_success slds-m-horizontal_small slds-p-around_small custom_border" ></span> Available
+            <span class="slds-theme_error slds-m-horizontal_small slds-p-around_small custom_border" ></span> Occupied
+            <span class="slds-theme_warning slds-m-horizontal_small slds-p-around_small custom_border" ></span> Selected
+        </div>
+
+    </lightning-card>
+</template>

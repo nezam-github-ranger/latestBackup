@@ -1,0 +1,12 @@
+<template>
+
+  <lightning-tabset variant="scoped" active-tab-value="Contact" style="margin-left: 10px;">
+      <template for:each={tabs} for:item="tab">
+        <lightning-tab label={tab.label} key={tab.value} value={tab.value} data-fieldset={tab.fieldset} onactive={handleActive}>
+          <!-- {tab.content} -->
+          <c-account-related-object-details selected-object={selectedObject} selected-field-set={selectedFieldSet}></c-account-related-object-details>
+        </lightning-tab>
+      </template>
+  </lightning-tabset>
+  <!-- <lightning-formatted-text value={selectedObject} ></lightning-formatted-text> -->
+</template>

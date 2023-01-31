@@ -1,0 +1,23 @@
+<apex:page Controller="BookingDetails" title="Booking Detail Page" >
+    <apex:form >
+        <apex:sectionHeader title="Booking Details Form" />
+       	<apex:pageMessages />
+        <apex:pageBlock title="Booking" >
+            <apex:pageBlockSection columns="2" >
+                <apex:inputField value="{!booking.Name}" />
+                <apex:inputField value="{!booking.Email__c}"/>
+                <apex:inputField value="{!booking.RoomNo__c}"/>
+                <apex:inputField value="{!booking.Status__c}"/>
+                <apex:inputField value="{!booking.Amount__c}"/>
+                <apex:inputField value="{!booking.Check_In_Time__c}"/>
+                <apex:inputField value="{!booking.Check_Out_Time__c}"/>
+                <apex:inputField value="{!booking.Customer__c}"/>
+            </apex:pageBlockSection>
+          	<apex:pageBlockButtons >
+            	<apex:commandButton action="{!save}" value="Save"/>
+                <apex:commandButton action="{!SaveAndNew}" value="SaveAndNew" />
+                
+            </apex:pageBlockButtons>
+        </apex:pageBlock> 
+    </apex:form>
+</apex:page>

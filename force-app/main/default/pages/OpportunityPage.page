@@ -1,0 +1,14 @@
+<apex:page controller="OpportunityController" title="Opportunity">
+    <apex:form >
+   		<apex:pageBlock >
+        	<apex:pageBlockTable value="{!modelList}" var="model">
+				<apex:column value="{!model.StageName}" headerValue="Stage" /> 
+                <apex:column value="{!model.maxAmount}" headerValue="MAX"/> 
+                <apex:column value="{!model.minAmount}" headerValue="MIN"/> 
+                <apex:column value="{!model.sumAmount}" headerValue="SUM"/> 
+                <apex:column value="{!model.avgAmount}" headerValue="AVG"/> 
+                <apex:column value="{!model.countAmount}" headerValue="COUNT"/> 
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

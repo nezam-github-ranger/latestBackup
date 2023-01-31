@@ -1,0 +1,30 @@
+<template>
+    <lightning-card if:true={card}>
+        <lightning-avatar src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"></lightning-avatar>
+        <b class="pcomponent">Child Components</b><br/><br/>
+        <div if:true={isIndia}>
+            <img src="https://www.lightningdesignsystem.com/assets/images/carousel/carousel-01.jpg" width="70%"></img>
+            <br/>
+            <b>Country : India </b> <br/>
+            <b>Capital : Delhi </b> <br/>
+            <b>Population : 1250000 </b> <br/>
+            <b>President : Narendra Modi </b>
+        </div>
+        <div if:true={isPakistan}>
+            <img src="https://www.lightningdesignsystem.com/assets/images/carousel/carousel-02.jpg" width="70%"></img>
+            <br/>
+            <b>Country : Pakistan </b> <br/>
+            <b>Capital : Kranchi </b> <br/>
+            <b>Population : 134000 </b> <br/>
+            <b>President : Shahid Afridi </b>
+        </div>
+        <div if:true={isEngland}>
+            <img src="https://www.lightningdesignsystem.com/assets/images/carousel/carousel-03.jpg" width="70%"></img>
+            <br/>
+            <b>Country : England </b> <br/>
+            <b>Capital : Sydney </b> <br/>
+            <b>Population : 14300 </b> <br/>
+            <b>President : John Albert </b>
+        </div>
+    </lightning-card>
+</template>

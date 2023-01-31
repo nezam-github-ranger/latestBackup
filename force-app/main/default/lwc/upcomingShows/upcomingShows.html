@@ -1,0 +1,22 @@
+<template>
+
+    <lightning-card>
+        <div class="slds-border_bottom">
+            <b style="font-size: x-large;margin-left: 70px;">My Upcoming Shows</b>
+        </div>
+        <template if:true={moviesDetails} for:each={moviesDetails} for:item="movies">
+           <div class="slds-border_bottom" style="margin-top: 10px;" key={movies.moviesObject.Id}>
+                <div class="slds-grid slds-wrap" >
+                    <div class="slds-col slds-small-size_12-of-12 slds-medium-size_3-of-12 slds-large-size_2-of-12">
+                        <lightning-avatar size="medium" src={movies.imageUrl} class="slds-m-left_large"></lightning-avatar>
+                    </div>
+                    <div class="slds-col slds-small-size_12-of-12 slds-medium-size_9-of-12 slds-large-size_10-of-12">
+                        <p>{movies.moviesObject.Name}</p>
+                        <lightning-formatted-date-time value={movies.moviesObject.Start_Time__c} hour="2-digit" minute="2-digit" time-zone="UTC" time-zone-name="short"></lightning-formatted-date-time>
+                        <span> -- GOLD - 5Seats</span>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>

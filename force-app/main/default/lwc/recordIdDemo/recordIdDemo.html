@@ -1,0 +1,17 @@
+<template>
+
+    <lightning-card  variant="Narrow"  title="Hello">
+        <b> Record Id : {recordId}</b>
+
+        <template if:true={product}>
+            <label>{product.Id}</label>
+            <label>{product.Name}</label>
+            <label>{product.Description__c}</label>
+            <label>{product.Price__c}</label>
+        </template>
+
+        <p slot="footer">Card Footer</p>
+    </lightning-card>
+
+    
+</template>

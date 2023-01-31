@@ -1,0 +1,22 @@
+<apex:page standardController="Contact" extensions="showTaskPageController">
+    <apex:form >
+        <apex:variable value="{!0}" var="count" />
+        <apex:pageBlock >
+            <apex:sectionHeader title="Task Details" />
+            <apex:pageBlockTable value="{!tskList}" var="var1">
+                <apex:column headerValue="Checkbox" >
+                    <input type="checkbox" id="" name="{!var1.Id}" value="{!var1.Id}" />
+                </apex:column>
+                <apex:column headerValue="##">
+                	<apex:variable value="{!count+1}" var="count" />
+                    <apex:outputText value="{!count}" />
+                </apex:column>
+                <apex:column value="{!var1.Subject}"/>
+                <apex:column value="{!var1.Id}"/>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Assign Task" action="{!assignTask}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

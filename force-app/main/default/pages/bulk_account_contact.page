@@ -1,0 +1,73 @@
+<apex:page controller="BulkAccountContact" docType="html-5.0">
+    <apex:slds />
+    <apex:form id="frm">
+        <!--<apex:actionFunction name="removeRowAction" action="{!removeRow}" rerender="pg" status="myStatus" >
+        	<apex:param name="idx" value="{!wrapper.serialNo}" assignTo="{!index}" />
+        </apex:actionFunction>-->
+        <apex:actionStatus id="myAjaxStatus" >
+            <apex:facet name="start" >
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                    &nbsp;
+                </div>
+                <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                    <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px;">
+                        <img src="/img/loading.gif" style="float: left; margin: 8px;" />
+                        <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionStatus>
+        <apex:pageBlock id="pg">
+            <apex:pageMessages id="errorMsg" />
+            <table style="tableCss font-family: arial, sans-serif; border-collapse: collapse; width: 100%;">
+                <tr>
+                    <!-- <th>SrNo.</th> -->
+                    <th><b style="margin-left: 100px;">Action</b></th>
+                    <th><b style="margin-left: 220px;">Name</b></th>
+                    <th><b style="margin-left: 125px;">Phone</b></th>
+                </tr>
+                <apex:repeat value="{!wrapperList}" var="wrapper">
+                    <tr>
+                        <!-- <td><apex:outputText value="{!wrapper.serialNo}" /></td> -->
+                        <td>
+                            <apex:commandButton value="New Account" action="{!newAccount}" reRender="frm" status="myAjaxStatus" >
+                                <apex:param name="accountIdx" value="{!wrapper.serialNo}" assignTo="{!index}" />
+                            </apex:commandButton>
+                            <apex:commandButton value="New Contact" action="{!newContact}" reRender="frm" status="myAjaxStatus" >
+                                <apex:param name="contactIdx" value="{!wrapper.serialNo}" assignTo="{!index}" />
+                            </apex:commandButton>
+                            <apex:commandButton value="Remove Row" action="{!removeRow}" reRender="frm" status="myAjaxStatus" >
+                                <apex:param name="idx" value="{!wrapper.serialNo}" assignTo="{!index}" />
+                                <!--<button onclick="removeRowAction()">
+                                    <span class="slds-icon slds-current-color" title="description of icon when needed"> 
+                                        <svg aria-hidden="true" class="slds-icon slds-icon_small">
+                                            <use href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#delete')}"></use>
+                                        </svg>
+                                    </span>
+                                </button>-->
+                            </apex:commandButton>
+                        </td>
+                        <td><apex:inputField html-placeholder="Name" required="false" style="width:300px; margin-left: 100px; border-radius: 3px; border-color: grey;" value="{!wrapper.accountObj.Name}" /></td>
+                        <td><apex:inputField html-placeholder="Phone" style="width:300px; border-radius: 3px; border-color: grey;" value="{!wrapper.accountObj.Phone}" /><apex:outputText value="{!wrapper.serialNo}" /></td>
+                        
+                    </tr>
+                    <apex:repeat value="{!wrapper.contactIndexMap}" var="key" id="repeat">
+                        <tr>
+                            <td>
+                                <apex:commandButton value="Remove Row" action="{!contactRemoveRow}" reRender="frm" status="myAjaxStatus" >
+                                    <apex:param name="index" value="{!wrapper.serialNo}" assignTo="{!index}" />
+                                    <apex:param name="contactRemovedIndex" value="{!key}" assignTo="{!contactRemovedIndex}" />
+                                </apex:commandButton>
+                            </td>
+                            <td><apex:inputField html-placeholder="First Name" style="width:300px; margin-left: 100px; border-radius: 3px; border-color: grey;" value="{!wrapper.contactIndexMap[key].FirstName}" /></td>
+                            <td><apex:inputField html-placeholder="Last Name" required="false" style="width:300px; border-radius: 3px; border-color: grey;" value="{!wrapper.contactIndexMap[key].LastName}" />[{!wrapper.serialNo}][{!key}]</td>
+                        </tr>
+                    </apex:repeat>
+                </apex:repeat>
+            </table>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" reRender="errorMsg" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

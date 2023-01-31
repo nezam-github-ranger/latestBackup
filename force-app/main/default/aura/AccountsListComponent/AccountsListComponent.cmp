@@ -1,0 +1,44 @@
+<aura:component controller="AccountListComponentCls">
+    
+    <!-- Variable Declartion --> 
+    <aura:attribute name="acc" type="Account[]"/>
+    <aura:attribute name="accountName" type="String" />
+    
+    <div>
+        <ui:button label="Get All Accounts" press="{!c.myAction}"/>
+        <br/><br/>
+        <lightning:input value="{!v.accountName}" label="Enter Account Name" placeholder="Enter Account Name...." />
+        <lightning:button label="Search" title="Search" onclick="{!c.handleSearch}"/>
+    </div>
+    
+    <!--
+    <div>
+        <br/>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr>
+                    <th class="slds-text-title_caps" scope="col">
+                        <div class="slds-turncate" title="Name"> Name</div>
+                    </th>
+                    <th class="slds-text-title_caps" scope="col">
+                        <div class="slds-turncate" title="Email"> Email</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.acc}" var="accObj" indexVar="index" >
+                    <tr>
+                        <td data-label="Name" scope="row">
+                            <div class="slds-truncate" title="Name" > {!accObj.Name}</div>
+                        </td>
+                        <td data-label="Email" scope="row">
+                            <div class="slds-truncate" title="Email" > {!accObj.Email__c}</div>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+	--> 
+
+</aura:component>

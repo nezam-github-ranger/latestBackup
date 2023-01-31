@@ -1,0 +1,84 @@
+<apex:page controller="ContactCheckboxController" title="Contact Checkbox Page">
+    <apex:form id="form">
+       <apex:actionFunction action="{!checkboxSelect}" reRender="form" name="checkboxSelect" />
+       <apex:actionFunction action="{!checkboxAllSelect}" reRender="form" name="checkboxAllSelect" />
+       <apex:actionFunction action="{!deleteClicked}" reRender="form" name="deleteClicked" >
+       		<apex:param assignTo="{!deletedId}" name="DeletedId" value="Contact"/>   
+       </apex:actionFunction>
+       <apex:actionFunction action="{!createClone}" reRender="form" name="createClone" >
+       		<apex:param assignTo="{!cloneId}" name="ColoneId" value="Contact"/>   
+       </apex:actionFunction>
+        
+       <apex:pageBlock rendered="{!cloneShow}">
+       	<apex:pageBlockSection >
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="First Name" />
+                <apex:inputField value="{!cloneRecord.FirstName}"  />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Last Name" />
+                <apex:inputField value="{!cloneRecord.LastName}" required="false"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+            	<apex:outputLabel value="Email" />
+                <apex:inputField value="{!cloneRecord.Email}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+            	<apex:outputLabel value="Phone" />
+                <apex:inputField value="{!cloneRecord.Phone}" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+      </apex:pageBlock> 
+        
+       <apex:pageBlock title="Contact Details Page" >
+            <apex:pageBlockTable value="{!modelList}" var="con" rows="{!numberOfRows}" first="{!startingRows}" >
+                <apex:column headerValue="SNo.">
+                	<apex:outputText value="{!con.serialNo}"/> 
+                </apex:column>
+                <apex:column headerValue="Id">
+                	<apex:inputField value="{!con.conObj.Id}"/> 
+                </apex:column>
+                <apex:column headerValue="Name">
+                	<apex:inputText value="{!con.conObj.Name}" rendered="{!con.check}" />
+                    <apex:outputText value="{!con.conObj.Name}" rendered="{!!con.check}" />
+                </apex:column>
+              	<apex:column headerValue="Email">
+                	<apex:inputText value="{!con.conObj.Email}" rendered="{!con.check}"/>
+                    <apex:outputText value="{!con.conObj.Email}" rendered="{!!con.check}"/>
+                </apex:column>
+                <apex:column headerValue="Phone">
+                	<apex:inputText value="{!con.conObj.Phone}" rendered="{!con.check}"/>
+                    <apex:outputText value="{!con.conObj.Phone}" rendered="{!!con.check}"/>
+                </apex:column>
+                <apex:column headerValue="Fax">
+                	<apex:inputText value="{!con.conObj.Fax}" rendered="{!con.check}" />
+                    <apex:outputText value="{!con.conObj.Fax}" rendered="{!!con.check}" />
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">
+                        <apex:inputCheckbox value="{!checkAll}" onchange="checkboxAllSelect();" />
+					</apex:facet>
+                	<apex:inputCheckbox value="{!con.check}" onchange="checkboxSelect();"  />
+                </apex:column>
+                <apex:column headerValue="Delete Row">
+                	<apex:commandLink value="Delete" reRender="Null" onclick="deleteClicked('{!con.conObj.Id}')" />
+                </apex:column>
+                <apex:column headerValue="Clone">
+                	<apex:commandLink value="Clone" reRender="Null" onclick="createClone('{!con.conObj.Id}')" />
+                </apex:column>
+            </apex:pageBlockTable>
+          	<apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" />
+                <!-- <apex:commandButton value="Save Clone" action="{!saveClone}" /> -->
+                <apex:commandButton value="Cancel" action="{!cancel}" /> &nbsp;&nbsp;&nbsp;&nbsp; || &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <apex:commandButton value="First" action="{!first}" />
+                <apex:commandButton value="Next" action="{!next}" />
+                <apex:commandButton value="Previous" action="{!previous}" />
+                <apex:commandButton value="Last" action="{!last}" />
+            </apex:pageBlockButtons>
+        
+       </apex:pageBlock>
+    </apex:form>
+   	
+</apex:page>

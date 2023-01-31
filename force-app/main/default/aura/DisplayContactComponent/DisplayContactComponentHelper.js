@@ -1,0 +1,11 @@
+({
+	helperMethod : function() {
+		
+	}
+})
+
+({
+    doInit : function(){
+        
+    }    
+})

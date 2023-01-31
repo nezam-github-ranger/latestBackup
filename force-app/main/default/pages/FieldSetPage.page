@@ -1,0 +1,11 @@
+<apex:page controller="FieldSetController">
+    <apex:form >
+        <apex:pageBlock >
+        	<apex:pageBlockTable value="{!contactList}" var="conList" >
+            	<apex:repeat value="{!$objectType.Contact.FieldSets.Contacts_Custom_Fieldset}" var="conFieldSet">
+                	<apex:column value="{!conList[conFieldSet]}" />
+                </apex:repeat>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

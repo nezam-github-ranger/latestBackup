@@ -1,0 +1,20 @@
+<apex:page controller="ContactImageShowBlobController" >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!showList}" var="con">
+                <apex:column headerValue="Image">
+                    <apex:image value="{!$Resource.DefaultImage}" rendered="{!con.attList.Id == Null}" height="50" width="50" />
+                    <apex:image value="/servlet/servlet.FileDownload?file={!con.attList.Id}" rendered="{!con.attList.Id != Null}" height="50" width="50" />
+                </apex:column>     
+                <apex:column value="{!con.conList.Name}" />
+                <apex:column >
+                    
+                    <apex:inputFile value="{!con.attachment.body}" filename="{!con.attachment.name}" id="file"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Upload" action="{!upload}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

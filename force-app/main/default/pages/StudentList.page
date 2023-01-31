@@ -1,0 +1,29 @@
+<apex:page standardController="Student__c" recordSetVar="Student__c" title="Student List">
+    <apex:form >
+        <apex:pageBlock title="My Students" >
+            <apex:pageBlockTable value="{!Student__c}" var="stu" >
+                <apex:column headerValue="Action" >
+                    <apex:commandLink value="Edit" action="/apex/addNewStudent?id={!stu.Id}" /> &nbsp;&nbsp; || &nbsp;&nbsp;
+                    <apex:commandLink value="View" action="https://ibirds-4f-dev-ed.lightning.force.com/lightning/r/Student__c/{!stu.Id}/view" />
+               	</apex:column>
+                <apex:column value="{!stu.First_Name__c}"/>
+                <apex:column value="{!stu.Last_Name__c}"/>
+                <apex:column value="{!stu.Class__c}" /> 
+                <apex:column value="{!stu.Date_Of_Birth__c}"/>
+                <apex:column value="{!stu.Email__c}"/>
+                <apex:column value="{!stu.Sex__c}" />  
+                <apex:column value="{!stu.Married__c}"/>
+            </apex:pageBlockTable>
+            
+           <apex:pageBlockButtons >
+                <apex:commandButton value="Add Student" action="https://ibirds-4f-dev-ed--c.visualforce.com/apex/addNewStudent?core.apexpages.request.devconsole=1" />
+                <apex:commandButton action="{!first}" value="First"/>
+                <apex:commandButton action="{!previous}" value="Previous"/>
+                <apex:commandButton action="{!next}" value="Next"/>
+                <apex:commandButton action="{!last}" value="Last"/>
+           </apex:pageBlockButtons>
+        </apex:pageBlock>
+   
+    </apex:form>
+    
+</apex:page>

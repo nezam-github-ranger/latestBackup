@@ -1,0 +1,87 @@
+<aura:component controller="CustomDetailsController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="contactMap" type="Map" default="{ 'Id': '', 'FirstName': '', 'LastName' : '',
+                                                          'Email' : '', 'Phone' : '' }"/>
+    <aura:attribute name="listContact" type="String[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:card title="New Contact" footer="Click on Save button to create new Contact.">
+        
+        <br/>
+        <p class="slds-p-left_large">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:input style="width:40rem"
+                                     aura:id="firstName"
+                                     label="FirstName"
+                                     type="String"
+                                     value="{!v.contactMap.FirstName}"/>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:input style="width:40rem"
+                                     aura:id="lastName"
+                                     label="LastName"
+                                     type="String"
+                                     required="true"
+                                     value="{!v.contactMap.LastName}"/>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:input style="width:40rem"
+                                     aura:id="email"
+                                     label="Email"
+                                     type="String"
+                                     value="{!v.contactMap.Email}"/>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:input style="width:40rem"
+                                     aura:id="phone"
+                                     label="Phone"
+                                     type="String"
+                                     value="{!v.contactMap.Phone}"/>
+                </div>
+            </div>            
+        </p>
+        
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning:button aura:id="saveId"
+                              label="Save"   
+                              onclick="{!c.doSave}"/>
+        </div>
+    </lightning:card>
+    
+    <!-- ========================= Show List Of Contact Record ===================== -->
+    
+    <lightning:card title="Recent Contacts" footer="Recent Inserted Contacts.">
+        <div class="slds">
+            <div style="font-size:28px;font-weight:bold;margin-left:20px">
+                Record List
+            </div>
+            <br/>
+            <br/>
+            <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table_fixed-layout">
+                <thead>
+                    <tr class="slds-text-heading_label">
+                        <th scope="col"><div class="slds-truncate" title="First Name">First Name</div></th>
+                        <th scope="col"><div class="slds-truncate" title="Last Name">Last Name</div></th>
+                        <th scope="col"><div class="slds-truncate" title="Email">Email</div></th>
+                        <th scope="col"><div class="slds-truncate" title="Phone">Phone</div></th>
+                        <th scope="col"><div class="slds-truncate" title="Edit">Edit</div></th>
+                        <th scope="col"><div class="slds-truncate" title="Delete">Delete</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.listContact}" var="contact">
+                        <tr>
+                            <td><div class="slds-truncate" title="{!contact.FirstName}">{!contact.FirstName}</div></td>
+                            <td><div class="slds-truncate" title="{!contact.LastName}">{!contact.LastName}</div></td>
+                            <td><div class="slds-truncate" title="{!contact.Email}">{!contact.Email}</div></td>
+                            <td><div class="slds-truncate" title="{!contact.Phone}">{!contact.Phone}</div></td>
+                            <td><div><lightning:buttonIcon name="{!contact.Id}" iconName="utility:edit" variant="bare" onclick="{!c.handleEdit}" alternativeText="Edit" /></div></td>
+                            <td><div><lightning:buttonIcon name="{!contact.Id}" iconName="utility:delete" variant="bare" onclick="{!c.handleDelete}" alternativeText="Delete" /></div></td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </div>
+    </lightning:card>
+    
+</aura:component>
