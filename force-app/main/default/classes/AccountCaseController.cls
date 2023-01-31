@@ -4,7 +4,7 @@ public class AccountCaseController {
         caseList = new List<Case>();
         Id caseId = ApexPages.currentPage().getParameters().get('Id');
         if(caseId != Null){
-        	caseList = [SELECT AccountId, Type, Status, Reason, Origin FROM Case WHERE Id =: caseId];
+        	caseList = [SELECT AccountId, Type, Status, Reason, Phone, Origin FROM Case WHERE Id =: caseId];
         }			
     }
 }
